@@ -3,7 +3,6 @@ import './App.css';
 import Header from '../Header/Header';
 import Gallery from '../Gallery/Gallery';
 import Axios from 'axios';
-import flexbox from '@material-ui/system';
 
 import {Grid} from '@material-ui/core';
 
@@ -35,7 +34,6 @@ class App extends Component {
   }
 
   updateLikes = (id) =>{
-
     console.log('Id in updateLikes',id);
     Axios({
       method: 'PUT',
@@ -49,7 +47,20 @@ class App extends Component {
     })
   }
   
-  
+  updateFlip = (id) =>{
+    console.log('Id in updateFlip',id);
+    Axios({
+      method: 'PUT',
+      url: '/flip/' + id,
+    }).then((response)=>{
+      console.log('Success updating flip');
+      this.getImages();
+    }).catch((err)=>{
+      console.log('Error updating the likes:', err);
+      alert(err);
+    })
+  }
+
   render() {
     return (
       <>
@@ -61,7 +72,7 @@ class App extends Component {
           <Grid item xs={1} sm={1}/>
           <Grid item xs={10} sm={10}>
             <p>Photo Reel</p>
-            <Gallery images={this.state.images} updateLikes={this.updateLikes}/>
+            <Gallery images={this.state.images} updateLikes={this.updateLikes} updateFlip={this.updateFlip}/>
           </Grid>
           <Grid item xs={1} sm={1}/>
         </Grid>
