@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   getImages = ()=>{
+    console.log('In getImages');
    Axios({
     method: 'GET',
     url: '/gallery'
@@ -31,6 +32,21 @@ class App extends Component {
     console.log('Error getting images: ', error);
     alert('Something went wrong!')
   })
+  }
+
+  updateLikes = (id) =>{
+
+    console.log('Id in updateLikes',id);
+    Axios({
+      method: 'PUT',
+      url: '/gallery/like/' + id,
+    }).then((response)=>{
+      console.log('Success updating likes');
+      this.getImages();
+    }).catch((err)=>{
+      console.log('Error updating the likes:', err);
+      alert(err);
+    })
   }
   
   
@@ -45,7 +61,7 @@ class App extends Component {
           <Grid item xs={1} sm={1}/>
           <Grid item xs={10} sm={10}>
             <p>Photo Reel</p>
-            <Gallery images={this.state.images}/>
+            <Gallery images={this.state.images} updateLikes={this.updateLikes}/>
           </Grid>
           <Grid item xs={1} sm={1}/>
         </Grid>

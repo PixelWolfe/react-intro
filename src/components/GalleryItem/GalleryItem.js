@@ -20,15 +20,19 @@ import { FormHelperText } from '@material-ui/core';
 class GalleryItem extends Component{
 
     state = {
-        details: false,
-        isFlipped: false
+        isFlipped: this.props.isFlipped
     }
 
     toggleDetails=()=>{
         this.setState({
-            details: !this.state.details,
             isFlipped: !this.state.isFlipped
         })
+    }
+
+    toggleLikes=()=>{
+        console.log('Like button pressed!');
+        console.log(this.props.id);
+        this.props.updateLikes(this.props.id);
     }
 
     render(){
@@ -70,13 +74,13 @@ class GalleryItem extends Component{
                 {
                     (this.props.userLiked)?
                     <span style={spanStyle}>
-                        <IconButton>
+                        <IconButton onClick={this.toggleLikes}>
                         <FavoriteIcon />
                         </IconButton>
                         You Liked This.
                     </span>
                     :
-                    <IconButton>
+                    <IconButton onClick={this.toggleLikes}>
                     <FavoriteBorderIcon />
                     </IconButton>
                 }
@@ -93,17 +97,17 @@ class GalleryItem extends Component{
             {
                 (this.props.userLiked)?
                 <span style={spanStyle}>
-                    <IconButton>
+                    <IconButton onClick={this.toggleLikes}>
                     <FavoriteIcon />
                     </IconButton>
                     Likes: {this.props.likes}
                 </span>
                 :
                 <span style={spanStyle}>
-                <IconButton>
-                <FavoriteBorderIcon />
-                </IconButton>
-                Likes: {this.props.likes}
+                    <IconButton onClick={this.toggleLikes}>
+                    <FavoriteBorderIcon />
+                    </IconButton>
+                    Likes: {this.props.likes}
                 </span>
             }
             </CardActions>
