@@ -46,7 +46,7 @@ class App extends Component {
           <Grid item xs={10} sm={10}>
 
 
-
+            <p>Photo Reel</p>
             <Gallery images={this.state.images}/>
 
 

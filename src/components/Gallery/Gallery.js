@@ -9,14 +9,11 @@ class Gallery extends Component{
     render(){
         return(
             <>
-                <p>Adventure and Memories.</p>
                 <Grid container spacing={4}>
-
-                {JSON.stringify(this.props.images)}
                     {
                         this.props.images.map(image=>
                             <Grid item xs={12} sm={6} md={4} key={image.id}>
-                                <GalleryItem src={image.path} description={image.description}/>
+                                <GalleryItem src={image.path} description={image.description} userLiked={image.userLiked} likes={image.likes}/>
                             </Grid>
                         )
                     }

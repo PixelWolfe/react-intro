@@ -7,7 +7,7 @@ class Header extends Component{
         return(
             <AppBar position="static">
                 <Toolbar>
-                    <Typography>This is the Header</Typography>
+                    <Typography>Adventures and Memories</Typography>
                 </Toolbar>
             </AppBar>
         )

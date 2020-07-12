@@ -4,7 +4,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-
+import ReactCardFlip from 'react-card-flip';
 
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -20,12 +20,14 @@ import { FormHelperText } from '@material-ui/core';
 class GalleryItem extends Component{
 
     state = {
-        details: false
+        details: false,
+        isFlipped: false
     }
 
     toggleDetails=()=>{
         this.setState({
-            details: !this.state.details
+            details: !this.state.details,
+            isFlipped: !this.state.isFlipped
         })
     }
 
@@ -42,7 +44,7 @@ class GalleryItem extends Component{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            backgroundColor: "yellow",
+            backgroundColor: "rgb(178, 197, 218)",
             minHeight: "200px",
             color: "black",
             fontFamily: "Arial",
@@ -53,34 +55,41 @@ class GalleryItem extends Component{
             backgroundColor: "rgb(133, 158, 184)"
         };
         return(
-        <Card variant="outlined" style={cardStyle}>
 
+            <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
 
-                <CardContent onClick={this.toggleDetails}>
-                {
-                    this.state.details ? 
-                        <div style={descriptionStyles}>
-                          {this.props.description}
-                        </div> :
-                        <div style={imgStyles}>
-                        </div>
-                }
-                </CardContent>
-           
-
-
-
-
-
+        <Card style={cardStyle}>
+            <CardContent>
+                <div style={imgStyles} onClick={this.toggleDetails}>
+                </div>
+            </CardContent>
             <CardActions>
                 <IconButton>
-                    <FavoriteBorderIcon />
+                <FavoriteBorderIcon />
                 </IconButton>
                 <IconButton>
-                    <FavoriteIcon />
+                <FavoriteIcon />
                 </IconButton>
             </CardActions>
         </Card>
+
+        <Card style={cardStyle}>
+            <CardContent>
+                <div style={descriptionStyles} onClick={this.toggleDetails}>
+                {this.props.description}
+                </div> 
+            </CardContent>
+            <CardActions>
+                <IconButton>
+                <FavoriteBorderIcon />
+                </IconButton>
+                <IconButton>
+                <FavoriteIcon/>
+                </IconButton>
+            </CardActions>
+        </Card>
+
+        </ReactCardFlip>
         )
     }
 }
