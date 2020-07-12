@@ -1,0 +1,48 @@
+CREATE TABLE react_gallery (
+	"id" serial PRIMARY KEY,
+	"path" varchar(250) NOT NULL,
+	"description" varchar(250) NOT NULL,
+	"likes" integer NOT NULL,
+	"user_liked" boolean default False,
+	"is_flipped" boolean default False
+);
+
+INSERT INTO "react_gallery" ("path", "description", "likes")
+VALUES 
+( 'images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.', '7' ),
+( 'images/ahah.jpg', 'A typical photo with Robert Wolfe, gotta make it funny if I can.', '10' ),
+( 'images/sword.jpg', 'A comedic scene from Tartuffe.', '1' ),
+( 'images/sea_of_theives.jpg', 'Pirate party with Kim.', '2' ),
+( 'images/family.jpg', 'Family picnic on a beautiful day!', '20' ),
+( 'images/character.jpg', 'Robert Wolfe as Henry from The Skin of Our Teeth.', '0' ),
+( 'images/badass.jpg', 'Rob on the campus bus.', '40' ),
+( 'images/buddy.jpg', 'Rob as Buddy Holly with the Crickets!', '20' ),
+( 'images/birthday.jpg', 'I once made a really sad birthday cake with typos and a wrong age for my sister... good times.', '20' ),
+( 'images/cat-appa.jpg', 'Cat-bison? Statue in Barcelona', '20' ),
+( 'images/cute.jpg', 'My lovely girlfriend Kim and I after a performance of Chitty Chitty Bang Bang', '20' ),
+( 'images/dana_wedding.jpg', 'Good pre-wedding pic.', '20' ),
+( 'images/fencing_practice.jpg', 'Fencing practice!', '20' ),
+( 'images/fun.jpg', 'More wedding photos, spar-off.', '20' ),
+( 'images/funny.jpg', 'Rob dancing, like a goof.', '20' ),
+( 'images/goof.jpg', 'One card to rule them all', '20' ),
+( 'images/hack.jpg', 'Highschool memories!', '20' ),
+( 'images/happy.jpg', 'Almost A Very Potter Musical', '20' ),
+( 'images/harry-otter.jpg', 'Alnwick Castle England!', '20' ),
+( 'images/jada_and_rob.jpg', 'My nieces first time seeing me perform', '20' ),
+( 'images/jump.jpg', 'Jump!', '20' ),
+( 'images/lichKing.jpg', 'Keeping it cold with my man Arthus.', '20' ),
+( 'images/lovely_perfect_dream_couple.jpg', 'A tender kiss on a European train.', '20' ),
+( 'images/Milkmaid.jpg', 'First college theatre show, Ghost Sonata', '20' ),
+( 'images/pose.jpg', 'Work it.', '20' ),
+( 'images/rock.jpg', 'Golem.', '20' ),
+( 'images/sauron.jpg', 'The white hand of Sauroman. LOTR.', '20' ),
+( 'images/scarecrow.jpg', 'Missing my bones.', '20' ),
+( 'images/skat.jpg', 'Nosegrab it.', '20' ),
+( 'images/spar.jpg', 'Hamlet tension.', '20' ),
+( 'images/voldemort.jpg', 'Rob as Lord Voldemort', '20' ),
+( 'images/voldy.jpg', 'To dance again!!!', '20' ),
+( 'images/xplor.jpg', 'Raptors emerge', '20' ),
+( 'images/ye.jpg', 'Rock it', '20' ),
+( 'images/yeah!.jpg', 'Yeah!', '20' ),
+
+

@@ -13,24 +13,24 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 class GalleryItem extends Component{
 
     state = {
-        isFlipped: this.props.isFlipped
+        isFlipped: this.props.flipStatus
     }
 
     toggleDetails=()=>{
+        this.props.updateFlip(this.props.id, !this.state.isFlipped);
         this.setState({
             isFlipped: !this.state.isFlipped
         })
-        console.log(this.props.id);
-        this.props.updateFlip(this.props.id);
     }
 
     toggleLikes=()=>{
         console.log('Like button pressed!');
         console.log(this.props.id);
-        this.props.updateLikes(this.props.id);
+        this.props.updateLikes(this.props.id, !this.props.userLiked, this.props.likes);
     }
 
     render(){
+        
         const imgStyles = {
             backgroundImage: `url(${this.props.src})`,
             backgroundSize: "cover",

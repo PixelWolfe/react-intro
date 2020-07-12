@@ -33,11 +33,17 @@ class App extends Component {
   })
   }
 
-  updateLikes = (id) =>{
+  updateLikes = (id, userLiked, totalLikes) =>{
+    console.log('UserLIked status in updatelikes,', userLiked);
+    console.log('totalLikes status in totalLikes,', totalLikes);
+
+    let object = {newUserLiked: userLiked, totalLikes: totalLikes};
     console.log('Id in updateLikes',id);
+    console.log('sending object', object );
     Axios({
       method: 'PUT',
       url: '/gallery/like/' + id,
+      data: {newUserLiked: userLiked, totalLikes: totalLikes}
     }).then((response)=>{
       console.log('Success updating likes');
       this.getImages();
@@ -47,11 +53,15 @@ class App extends Component {
     })
   }
   
-  updateFlip = (id) =>{
+  updateFlip = (id, flipStatus) =>{
     console.log('Id in updateFlip',id);
+    console.log('flipStatus in updateFlip',flipStatus)
+    let object = {newFlipStatus: flipStatus};
+    console.log('sending object', object);
     Axios({
       method: 'PUT',
       url: '/flip/' + id,
+      data: {newFlipStatus: flipStatus}
     }).then((response)=>{
       console.log('Success updating flip');
       this.getImages();
@@ -81,15 +91,5 @@ class App extends Component {
     );
   }
 }
-
-      // <div className="App">
-
-      //   <Header/>
-
-      //   <br/>
-
-      //   <Gallery display="flex" flexDirection="column" images={this.state.images}/>
- 
-      // </div>
 
 export default App;

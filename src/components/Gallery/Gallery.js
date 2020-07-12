@@ -14,9 +14,9 @@ class Gallery extends Component{
                         this.props.images.map(image=>
                             <Grid item xs={12} sm={6} md={4} key={image.id}>
                                 <GalleryItem id={image.id} src={image.path}
-                                 description={image.description} userLiked={image.userLiked}
-                                  likes={image.likes} updateLikes={this.props.updateLikes}
-                                  isFlipped={image.isFlipped} updateFlip={this.props.updateFlip}/>
+                                 description={image.description} userLiked={image.user_liked}
+                                  likes={image.likes} flipStatus={image.is_flipped} 
+                                  updateLikes={this.props.updateLikes} updateFlip={this.props.updateFlip}/>
                             </Grid>
                         )
                     }
