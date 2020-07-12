@@ -3,6 +3,9 @@ import './App.css';
 import Header from '../Header/Header';
 import Gallery from '../Gallery/Gallery';
 import Axios from 'axios';
+import flexbox from '@material-ui/system';
+
+import {Grid} from '@material-ui/core';
 
 class App extends Component {
 
@@ -33,17 +36,42 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
+      <>
+      <Grid container direction="column">
+        <Grid item>
+          <Header/>
+        </Grid>
+        <Grid item container >
+          <Grid item xs={false} sm={2}/>
+          <Grid item xs={12} sm={8}>
 
-        <Header/>
 
-        <br/>
 
-        <Gallery images={this.state.images}/>
- 
-      </div>
+            <Gallery images={this.state.images}/>
+
+
+
+
+
+
+
+          </Grid>
+          <Grid item xs={false} sm={2}/>
+        </Grid>
+      </Grid>
+      </>
     );
   }
 }
+
+      // <div className="App">
+
+      //   <Header/>
+
+      //   <br/>
+
+      //   <Gallery display="flex" flexDirection="column" images={this.state.images}/>
+ 
+      // </div>
 
 export default App;
