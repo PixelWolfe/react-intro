@@ -54,6 +54,9 @@ class GalleryItem extends Component{
         const cardStyle = {
             backgroundColor: "rgb(133, 158, 184)"
         };
+        const spanStyle = {
+            fontSize: "12px"
+        };
         return(
 
             <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
@@ -64,12 +67,19 @@ class GalleryItem extends Component{
                 </div>
             </CardContent>
             <CardActions>
-                <IconButton>
-                <FavoriteBorderIcon />
-                </IconButton>
-                <IconButton>
-                <FavoriteIcon />
-                </IconButton>
+                {
+                    (this.props.userLiked)?
+                    <span style={spanStyle}>
+                        <IconButton>
+                        <FavoriteIcon />
+                        </IconButton>
+                        You Liked This.
+                    </span>
+                    :
+                    <IconButton>
+                    <FavoriteBorderIcon />
+                    </IconButton>
+                }
             </CardActions>
         </Card>
 
@@ -80,12 +90,22 @@ class GalleryItem extends Component{
                 </div> 
             </CardContent>
             <CardActions>
+            {
+                (this.props.userLiked)?
+                <span style={spanStyle}>
+                    <IconButton>
+                    <FavoriteIcon />
+                    </IconButton>
+                    Likes: {this.props.likes}
+                </span>
+                :
+                <span style={spanStyle}>
                 <IconButton>
                 <FavoriteBorderIcon />
                 </IconButton>
-                <IconButton>
-                <FavoriteIcon/>
-                </IconButton>
+                Likes: {this.props.likes}
+                </span>
+            }
             </CardActions>
         </Card>
 
