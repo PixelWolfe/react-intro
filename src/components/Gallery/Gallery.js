@@ -16,7 +16,7 @@ class Gallery extends Component{
                                 <GalleryItem id={image.id} src={image.path}
                                  description={image.description} userLiked={image.userLiked}
                                   likes={image.likes} updateLikes={this.props.updateLikes}
-                                  isFlipped={image.isFlipped}/>
+                                  isFlipped={image.isFlipped} updateFlip={this.props.updateFlip}/>
                             </Grid>
                         )
                     }

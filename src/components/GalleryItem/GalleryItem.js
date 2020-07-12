@@ -8,14 +8,7 @@ import ReactCardFlip from 'react-card-flip';
 
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { FormHelperText } from '@material-ui/core';
 
-
-// <CardContent style={imgStyles}>
-// <Typography variant="body1" component="p">
-// {this.props.description}
-// </Typography>
-// </CardContent>
 
 class GalleryItem extends Component{
 
@@ -27,6 +20,8 @@ class GalleryItem extends Component{
         this.setState({
             isFlipped: !this.state.isFlipped
         })
+        console.log(this.props.id);
+        this.props.updateFlip(this.props.id);
     }
 
     toggleLikes=()=>{
@@ -42,7 +37,8 @@ class GalleryItem extends Component{
             color: "white",
             minHeight: "200px",
             paddingLeft: "15px",
-            paddingRight: "15px"
+            paddingRight: "15px",
+            cursor: "pointer"
           };
         const descriptionStyles = {
             display: "flex",
@@ -53,7 +49,8 @@ class GalleryItem extends Component{
             color: "black",
             fontFamily: "Arial",
             paddingLeft: "15px",
-            paddingRight: "15px"
+            paddingRight: "15px",
+            cursor: "pointer"
         };
         const cardStyle = {
             backgroundColor: "rgb(133, 158, 184)"
@@ -61,6 +58,9 @@ class GalleryItem extends Component{
         const spanStyle = {
             fontSize: "12px"
         };
+        const pointerStyle ={
+            cursor: "pointer"
+        }
         return(
 
             <ReactCardFlip isFlipped={this.state.isFlipped} flipDirection="horizontal">
@@ -74,13 +74,13 @@ class GalleryItem extends Component{
                 {
                     (this.props.userLiked)?
                     <span style={spanStyle}>
-                        <IconButton onClick={this.toggleLikes}>
+                        <IconButton style={pointerStyle} onClick={this.toggleLikes}>
                         <FavoriteIcon />
                         </IconButton>
-                        You Liked This.
+                        You Like This.
                     </span>
                     :
-                    <IconButton onClick={this.toggleLikes}>
+                    <IconButton style={pointerStyle} onClick={this.toggleLikes}>
                     <FavoriteBorderIcon />
                     </IconButton>
                 }
@@ -97,14 +97,14 @@ class GalleryItem extends Component{
             {
                 (this.props.userLiked)?
                 <span style={spanStyle}>
-                    <IconButton onClick={this.toggleLikes}>
+                    <IconButton style={pointerStyle} onClick={this.toggleLikes}>
                     <FavoriteIcon />
                     </IconButton>
                     Likes: {this.props.likes}
                 </span>
                 :
                 <span style={spanStyle}>
-                    <IconButton onClick={this.toggleLikes}>
+                    <IconButton style={pointerStyle} onClick={this.toggleLikes}>
                     <FavoriteBorderIcon />
                     </IconButton>
                     Likes: {this.props.likes}
